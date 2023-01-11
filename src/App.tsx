@@ -1,5 +1,13 @@
+import Heading from "./components/Heading"
+import UserDetails from "./components/UserDetails"
+
 function App() {
-  return <h1 className="text-6xl">Admin UI</h1>
+  return (
+    <>
+      <Heading />
+      <UserDetails />
+    </>
+  )
 }
 
 export default App
