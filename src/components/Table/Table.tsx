@@ -15,9 +15,7 @@ function Table<T>({ columns, data, rowKey }: TableProps<T>) {
       <table>
         <thead>
           {/* Looping through column headers */}
-          <tr>
-            <TableHeader columns={columns} />
-          </tr>
+          <TableHeader columns={columns} />
 
           {/* Looping through data values for all columns */}
           <TableBody columns={columns} rowKey={rowKey} data={data} />
