@@ -1,35 +1,13 @@
-import { BsPencilSquare, BsTrash } from "react-icons/bs"
 import { User } from "../types/Users"
+import Table from "./Table"
+import { columns } from "./TableColumns"
 
 interface UserTableProps {
   data: User[]
 }
 
 function UserTable({ data }: UserTableProps) {
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Actions</th>
-        </tr>
-        {data?.map((user) => (
-          <tr key={user.id}>
-            <td></td>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{user.role}</td>
-            <td>
-              <BsPencilSquare /> <BsTrash />
-            </td>
-          </tr>
-        ))}
-      </thead>
-    </table>
-  )
+  return <Table<User> columns={columns} data={data} rowKey="id" />
 }
 
 export default UserTable
