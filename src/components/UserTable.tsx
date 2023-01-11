@@ -1,11 +1,11 @@
-import useQuery from "../api/useQuery"
-import { GET_USERS_ENDPOINT } from "../api/getUsersEndpoint"
-import { User } from "../types/Users"
 import { BsPencilSquare, BsTrash } from "react-icons/bs"
+import { User } from "../types/Users"
 
-function UserTable() {
-  const { data } = useQuery<User[]>(GET_USERS_ENDPOINT)
+interface UserTableProps {
+  data: User[]
+}
 
+function UserTable({ data }: UserTableProps) {
   return (
     <table>
       <thead>
