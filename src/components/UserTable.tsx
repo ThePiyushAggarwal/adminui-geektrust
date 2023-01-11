@@ -1,5 +1,5 @@
 import { User } from "../types/Users"
-import Table from "./Table"
+import Table from "./Table/Table"
 import { columns } from "./TableColumns"
 
 interface UserTableProps {

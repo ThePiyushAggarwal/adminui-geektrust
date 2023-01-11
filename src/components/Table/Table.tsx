@@ -1,5 +1,5 @@
 import { ReactNode, Key } from "react"
-import { ColumnsType } from "../types/Table"
+import { ColumnsType } from "../../types/Table"
 
 interface TableProps<T> {
   columns: ColumnsType
