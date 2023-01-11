@@ -1,5 +1,6 @@
 import { ReactNode, Key } from "react"
 import { ColumnsType } from "../../types/Table"
+import TableHeader from "./TableHeader"
 
 interface TableProps<T> {
   columns: ColumnsType
@@ -14,11 +15,8 @@ function Table<T>({ columns, data, rowKey }: TableProps<T>) {
       <table>
         <thead>
           {/* Looping through column headers */}
-          <tr>
-            {columns.map((column) => (
-              <th key={column.key}>{column.label}</th>
-            ))}
-          </tr>
+          <TableHeader columns={columns} />
+
           {/* Looping through data values for all columns */}
           {data.map((item) => (
             <tr key={item[rowKey as keyof typeof item] as Key}>
