@@ -10,6 +10,11 @@ function UserDetails() {
   const { data } = useQuery<User[]>(GET_USERS_ENDPOINT)
   const [searchTerm, setSearchTerm] = useState<string>("")
 
+  /**
+   * TODO I want to use debouncing here.
+   * Haven't made up my mind fully.
+   * Let's see.
+   */
   const filteredData = useMemo(
     () => data && filterOnSearch<User>(data, searchTerm, ["id"]),
     [searchTerm, data]
