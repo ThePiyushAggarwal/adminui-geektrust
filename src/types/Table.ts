@@ -1,7 +1,7 @@
-import { ReactNode } from "react"
+import { ReactNode, Key } from "react"
 
 export type ColumnsType = {
-  key: string
+  key: Key
   label: string
   dataIndex?: string
   render?: () => ReactNode
