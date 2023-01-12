@@ -29,7 +29,7 @@ export const filterOnSearch = <T>(
               !fieldsToExcludeFromSearch.includes(x) &&
               value &&
               isValueString &&
-              value.includes(searchTerm)
+              value.toLowerCase().includes(searchTerm.toLowerCase())
             )
           })
       )
