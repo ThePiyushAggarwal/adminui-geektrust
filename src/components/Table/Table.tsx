@@ -1,7 +1,8 @@
 import { ColumnsType } from "../../types/Table"
 import TableBody from "./TableBody"
 import TableHeader from "./TableHeader"
-import { Key } from "react"
+import { Key, useMemo } from "react"
+import Pagination, { PaginationType } from "../Pagination/Pagination"
 
 export interface RowSelection {
   selectedRowKeys: Key[]
@@ -14,9 +15,16 @@ export interface TableProps<T> {
   // `rowKey` is the unique key present in the `data`
   rowKey: string
   rowSelection?: RowSelection
+  pagination: PaginationType
 }
 
-function Table<T>({ columns, data, rowKey, rowSelection }: TableProps<T>) {
+function Table<T>({
+  columns,
+  data,
+  rowKey,
+  rowSelection,
+  pagination,
+}: TableProps<T>) {
   const toggleKey = (id: Key) =>
     // Check if `id` exists
     rowSelection?.selectedRowKeys?.some((key) => key === id)
@@ -27,23 +35,34 @@ function Table<T>({ columns, data, rowKey, rowSelection }: TableProps<T>) {
       : // Adding `id`
         rowSelection?.onChange([...rowSelection?.selectedRowKeys, id])
 
+  const paginatedData = useMemo(() => {
+    const { pageSize, currentPage } = pagination
+
+    return [...data].splice((currentPage - 1) * pageSize, pageSize)
+  }, [data, pagination])
+
   return (
     <>
       <table>
+        {/* Looping through column headers */}
         <thead>
-          {/* Looping through column headers */}
           <TableHeader<T> columns={columns} rowSelection={rowSelection} />
+        </thead>
 
-          {/* Looping through data values for all columns */}
+        {/* Looping through data values for all columns */}
+        <tbody>
           <TableBody<T>
             columns={columns}
             rowKey={rowKey}
-            data={data}
+            data={paginatedData}
             rowSelection={rowSelection}
             toggleKey={toggleKey}
           />
-        </thead>
+        </tbody>
       </table>
+
+      {/* Pagination */}
+      <Pagination pagination={pagination} />
     </>
   )
 }

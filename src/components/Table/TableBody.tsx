@@ -1,7 +1,7 @@
 import { ReactNode, Key } from "react"
 import { TableProps } from "./Table"
 
-interface TableBodyProps<T> extends TableProps<T> {
+interface TableBodyProps<T> extends Omit<TableProps<T>, "pagination"> {
   toggleKey: (id: Key) => void
 }
 
