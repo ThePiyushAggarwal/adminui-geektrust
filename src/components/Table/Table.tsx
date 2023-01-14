@@ -1,5 +1,5 @@
 import { ColumnsType } from "../../types/Table"
-import TableBody from "./TableBody"
+import TableRow from "./TableRow"
 import TableHeader from "./TableHeader"
 import { Key, useMemo } from "react"
 import Pagination, { PaginationType } from "../Pagination/Pagination"
@@ -51,13 +51,16 @@ function Table<T>({
 
         {/* Looping through data values for all columns */}
         <tbody>
-          <TableBody<T>
-            columns={columns}
-            rowKey={rowKey}
-            data={paginatedData}
-            rowSelection={rowSelection}
-            toggleKey={toggleKey}
-          />
+          {paginatedData.map((item) => (
+            <TableRow<T>
+              key={item[rowKey as keyof typeof item] as Key}
+              columns={columns}
+              rowSelection={rowSelection}
+              toggleKey={toggleKey}
+              item={item}
+              rowKey={rowKey}
+            />
+          ))}
         </tbody>
       </table>
 
