@@ -1,7 +1,7 @@
+import { Key, useMemo, useState } from "react"
 import { ColumnsType } from "../../types/Table"
 import TableRow from "./TableRow"
 import TableHeader from "./TableHeader"
-import { Key, useMemo } from "react"
 import Pagination, { PaginationType } from "../Pagination/Pagination"
 
 export interface RowSelection {
@@ -13,7 +13,7 @@ export interface TableProps<T> {
   columns: ColumnsType<T>
   data: T[]
   // `rowKey` is the unique key present in the `data`
-  rowKey: string
+  rowKey: keyof T
   rowSelection?: RowSelection
   pagination: PaginationType
 }
@@ -25,15 +25,26 @@ function Table<T>({
   rowSelection,
   pagination,
 }: TableProps<T>) {
-  const toggleKey = (id: Key) =>
-    // Check if `id` exists
-    rowSelection?.selectedRowKeys?.some((key) => key === id)
-      ? // Removing `id`
+  /** State for the Checkbox in Table header */
+  const [allChecked, setAllChecked] = useState(false)
+
+  /** Makes sure to add/remove the passed in key
+   * Called when individual row checkbox is clicked
+   */
+  const toggleKey = (id: Key) => {
+    if (rowSelection) {
+      // Check if `id` exists
+      if (rowSelection.selectedRowKeys.some((key) => key === id)) {
+        // Removing `id`
         rowSelection.onChange(
           rowSelection.selectedRowKeys.filter((key) => key !== id)
         )
-      : // Adding `id`
-        rowSelection?.onChange([...rowSelection?.selectedRowKeys, id])
+      } else {
+        // Adding `id`
+        rowSelection.onChange([...rowSelection.selectedRowKeys, id])
+      }
+    }
+  }
 
   const paginatedData = useMemo(() => {
     const { pageSize, currentPage } = pagination
@@ -41,19 +52,55 @@ function Table<T>({
     return [...data].splice((currentPage - 1) * pageSize, pageSize)
   }, [data, pagination])
 
+  /** Makes sure to select/deselect all when called
+   * Called when the checkbox in header is clicked
+   */
+  const toggleSelectAll = () => {
+    /** All keys on the paginated page */
+    const allKeysOnPage = paginatedData.map((data) => data[rowKey]) as Key[]
+
+    if (rowSelection) {
+      /** All that are selected on this page */
+      const allSelectedOnThisPage = rowSelection.selectedRowKeys.filter((key) =>
+        allKeysOnPage.includes(key)
+      )
+
+      if (allSelectedOnThisPage.length === pagination.pageSize) {
+        /** Array of keys left after removing all visible */
+        const pendingKeys = rowSelection.selectedRowKeys.filter(
+          (key) => !allKeysOnPage.includes(key)
+        )
+        rowSelection.onChange(pendingKeys)
+        setAllChecked(false)
+      } else {
+        /** `Set` makes sure that there are no duplicate entries */
+        const selectAllOnThisPage = [
+          ...new Set([...allKeysOnPage, ...allSelectedOnThisPage]),
+        ]
+        rowSelection.onChange(selectAllOnThisPage)
+        setAllChecked(true)
+      }
+    }
+  }
+
   return (
     <>
       <table>
         {/* Looping through column headers */}
         <thead>
-          <TableHeader<T> columns={columns} rowSelection={rowSelection} />
+          <TableHeader<T>
+            columns={columns}
+            rowSelection={rowSelection}
+            toggleSelectAll={toggleSelectAll}
+            checked={allChecked}
+          />
         </thead>
 
         {/* Looping through data values for all columns */}
         <tbody>
           {paginatedData.map((item) => (
             <TableRow<T>
-              key={item[rowKey as keyof typeof item] as Key}
+              key={item[rowKey] as Key}
               columns={columns}
               rowSelection={rowSelection}
               toggleKey={toggleKey}
