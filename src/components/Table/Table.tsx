@@ -9,7 +9,7 @@ export interface RowSelection {
 }
 
 export interface TableProps<T> {
-  columns: ColumnsType
+  columns: ColumnsType<T>
   data: T[]
   /** `rowKey` is the unique key present in the `data` */
   rowKey: string
@@ -32,10 +32,10 @@ function Table<T>({ columns, data, rowKey, rowSelection }: TableProps<T>) {
       <table>
         <thead>
           {/* Looping through column headers */}
-          <TableHeader columns={columns} rowSelection={rowSelection} />
+          <TableHeader<T> columns={columns} rowSelection={rowSelection} />
 
           {/* Looping through data values for all columns */}
-          <TableBody
+          <TableBody<T>
             columns={columns}
             rowKey={rowKey}
             data={data}

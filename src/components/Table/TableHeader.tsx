@@ -1,12 +1,12 @@
 import { ColumnsType } from "../../types/Table"
 import { RowSelection } from "./Table"
 
-interface TableHeaderProps {
-  columns: ColumnsType
+interface TableHeaderProps<T> {
+  columns: ColumnsType<T>
   rowSelection?: RowSelection
 }
 
-function TableHeader({ columns, rowSelection }: TableHeaderProps) {
+function TableHeader<T>({ columns, rowSelection }: TableHeaderProps<T>) {
   return (
     <tr>
       {rowSelection && <th></th>}

@@ -1,7 +1,8 @@
 import { BsPencilSquare, BsTrash } from "react-icons/bs"
 import { ColumnsType } from "../types/Table"
+import { User } from "../types/Users"
 
-export const columns: ColumnsType = [
+export const columns: ColumnsType<User> = [
   {
     key: "1",
     label: "Name",

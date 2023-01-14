@@ -40,7 +40,7 @@ function TableBody<T>({
               ) : (
                 render && (
                   <td key={key} onClick={onClick}>
-                    {render()}
+                    {render(item)}
                   </td>
                 )
               )
