@@ -24,7 +24,10 @@ function UserTable({ data }: UserTableProps) {
         rowKey="id"
         rowSelection={rowSelection}
       />
-      <DeleteManyUsersButton userIds={selectedRowKeys} />
+      <DeleteManyUsersButton
+        userIds={selectedRowKeys}
+        setSelectedRowKeys={setSelectedRowKeys}
+      />
     </>
   )
 }
