@@ -1,4 +1,3 @@
-import { BsPencilSquare } from "react-icons/bs"
 import { ColumnsType } from "../types/Table"
 import { User } from "../types/Users"
 import DeleteUserButton from "./DeleteUserButton"
