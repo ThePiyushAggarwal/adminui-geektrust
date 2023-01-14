@@ -16,6 +16,25 @@ function Pagination({ pagination }: Props) {
 
   return (
     <div>
+      {/* Go to first page */}
+      <button
+        type="button"
+        onClick={() => onChange(1)}
+        disabled={currentPage === 1}
+        className="border"
+      >
+        {`<<`}
+      </button>
+      {/* Go to previous page */}
+      <button
+        type="button"
+        onClick={() => onChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="border"
+      >
+        {`<`}
+      </button>
+      {/* Go to numbered page */}
       {[...Array(totalPages)].map((_, index) => (
         <button
           type="button"
@@ -26,6 +45,24 @@ function Pagination({ pagination }: Props) {
           {index + 1}
         </button>
       ))}
+      {/* Go to next page */}
+      <button
+        type="button"
+        onClick={() => onChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="border"
+      >
+        {`>`}
+      </button>
+      {/* Go to last page */}
+      <button
+        type="button"
+        onClick={() => onChange(totalPages)}
+        disabled={currentPage === totalPages}
+        className="border"
+      >
+        {`>>`}
+      </button>
     </div>
   )
 }
