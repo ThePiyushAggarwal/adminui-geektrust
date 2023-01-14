@@ -1,20 +1,28 @@
+import { useState } from "react"
 import { BsPencilSquare } from "react-icons/bs"
-import { useAppDispatch } from "../store/hooks"
-import { updateUserDetails } from "../store/userSlice"
 import { User } from "../types/Users"
+import Modal from "./Modal/Modal"
+import EditUserForm from "./EditUserForm"
 
 interface Props {
   user: User
 }
 
 function EditUserButton({ user }: Props) {
-  const dispatch = useAppDispatch()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const onClick = () => {
-    dispatch(updateUserDetails(user))
-  }
+  const toggleModal = () => setIsModalOpen((val) => !val)
 
-  return <BsPencilSquare onClick={onClick} />
+  return (
+    <>
+      <BsPencilSquare onClick={toggleModal} />
+      {isModalOpen && (
+        <Modal open={isModalOpen} toggle={toggleModal}>
+          <EditUserForm user={user} toggle={toggleModal} />
+        </Modal>
+      )}
+    </>
+  )
 }
 
 export default EditUserButton

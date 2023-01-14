@@ -24,7 +24,7 @@ export const columns: ColumnsType<User> = [
     label: "Actions",
     render: (user) => (
       <>
-        <EditUserButton user={{ ...user, role: "Iron Man" }} />
+        <EditUserButton user={user} />
         <DeleteUserButton id={user.id} />
       </>
     ),
