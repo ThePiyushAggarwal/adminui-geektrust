@@ -1,6 +1,6 @@
-import { Key } from "react"
-import { useAppDispatch } from "../store/hooks"
-import { deleteManyUsers } from "../store/userSlice"
+import { Key, useState } from "react"
+import DeleteUsersConfirmationTable from "./DeleteUsersConfirmationTable"
+import Modal from "./Modal/Modal"
 
 interface Props {
   userIds: Key[]
@@ -8,21 +8,29 @@ interface Props {
 }
 
 function DeleteManyUsersButton({ userIds, setSelectedRowKeys }: Props) {
-  const dispatch = useAppDispatch()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const onClick = () => {
-    dispatch(deleteManyUsers(userIds))
-    setSelectedRowKeys([])
-  }
+  const toggleModal = () => setIsModalOpen((val) => !val)
 
   return (
-    <button
-      onClick={onClick}
-      className="text-red-500 text-3xl"
-      disabled={!userIds.length}
-    >
-      Delete Selected
-    </button>
+    <>
+      <button
+        onClick={toggleModal}
+        className="text-red-500 text-3xl"
+        disabled={!userIds.length}
+      >
+        Delete Selected
+      </button>
+      {isModalOpen && (
+        <Modal open={isModalOpen} toggle={toggleModal}>
+          <DeleteUsersConfirmationTable
+            userIds={userIds}
+            setSelectedRowKeys={setSelectedRowKeys}
+            toggleModal={toggleModal}
+          />
+        </Modal>
+      )}
+    </>
   )
 }
 
