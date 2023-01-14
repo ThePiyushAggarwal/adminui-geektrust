@@ -21,28 +21,25 @@ function TableBody<T>({
         )
         const onChange = () => toggleKey(id)
         return (
-          <tr key={id} onClick={onChange}>
+          <tr key={id}>
             {rowSelection && (
               <td>
-                <input type="checkbox" checked={isChecked} readOnly />
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  readOnly
+                  onClick={onChange}
+                />
               </td>
             )}
+
             {columns.map((column) => {
-              const { dataIndex, render, key, clickToSelect } = column
+              const { dataIndex, render, key } = column
               const value = item[dataIndex as keyof typeof item] as ReactNode
-              // Table Row is clickable.
-              // This is handled using `onClick` function and `clickToSelect`
-              const onClick = (e: React.MouseEvent) =>
-                !clickToSelect && e.stopPropagation()
+
               //  If `dataIndex` exists that is shown instead of `render`
-              return dataIndex ? (
-                <td key={key}>{value}</td>
-              ) : (
-                render && (
-                  <td key={key} onClick={onClick}>
-                    {render(item)}
-                  </td>
-                )
+              return (
+                <td key={key}>{dataIndex ? value : render && render(item)}</td>
               )
             })}
           </tr>

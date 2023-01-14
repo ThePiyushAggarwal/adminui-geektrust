@@ -28,6 +28,5 @@ export const columns: ColumnsType<User> = [
         <DeleteUserButton id={user.id} />
       </>
     ),
-    clickToSelect: false,
   },
 ]
