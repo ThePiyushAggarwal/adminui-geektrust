@@ -25,5 +25,6 @@ export const columns: ColumnsType = [
         <BsPencilSquare /> <BsTrash />
       </>
     ),
+    clickToSelect: false,
   },
 ]

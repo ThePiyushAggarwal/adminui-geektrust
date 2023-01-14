@@ -1,3 +1,4 @@
+import { useState, Key } from "react"
 import { User } from "../types/Users"
 import Table from "./Table/Table"
 import { columns } from "./TableColumns"
@@ -7,7 +8,21 @@ interface UserTableProps {
 }
 
 function UserTable({ data }: UserTableProps) {
-  return <Table<User> columns={columns} data={data} rowKey="id" />
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([])
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: (selectedRowKeys: Key[]) => setSelectedRowKeys(selectedRowKeys),
+  }
+
+  return (
+    <Table<User>
+      columns={columns}
+      data={data}
+      rowKey="id"
+      rowSelection={rowSelection}
+    />
+  )
 }
 
 export default UserTable
