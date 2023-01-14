@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { Key } from "react"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { User } from "../types/Users"
 
 export interface UserState {
@@ -13,13 +14,13 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUsers: (state, { payload }) => {
+    setUsers: (state, { payload }: PayloadAction<User[]>) => {
       state.users = payload
     },
-    deleteUser: (state, { payload }) => {
+    deleteUser: (state, { payload }: PayloadAction<Key>) => {
       state.users = state.users.filter((user) => user.id !== payload)
     },
-    updateUserDetails: (state, { payload }) => {
+    updateUserDetails: (state, { payload }: PayloadAction<User>) => {
       state.users = state.users.map((user) =>
         user.id === payload.id ? payload : user
       )
