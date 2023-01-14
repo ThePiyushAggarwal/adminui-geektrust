@@ -11,20 +11,20 @@ export interface RowSelection {
 export interface TableProps<T> {
   columns: ColumnsType<T>
   data: T[]
-  /** `rowKey` is the unique key present in the `data` */
+  // `rowKey` is the unique key present in the `data`
   rowKey: string
   rowSelection?: RowSelection
 }
 
 function Table<T>({ columns, data, rowKey, rowSelection }: TableProps<T>) {
   const toggleKey = (id: Key) =>
-    /** Check if `id` exists */
+    // Check if `id` exists
     rowSelection?.selectedRowKeys?.some((key) => key === id)
-      ? /** Removing `id` */
+      ? // Removing `id`
         rowSelection.onChange(
           rowSelection.selectedRowKeys.filter((key) => key !== id)
         )
-      : /** Adding `id` */
+      : // Adding `id`
         rowSelection?.onChange([...rowSelection?.selectedRowKeys, id])
 
   return (
