@@ -16,9 +16,13 @@ function DeleteManyUsersButton({ userIds, setSelectedRowKeys }: Props) {
   }
 
   return (
-    <div onClick={onClick} className="text-red-500 text-3xl">
+    <button
+      onClick={onClick}
+      className="text-red-500 text-3xl"
+      disabled={!userIds.length}
+    >
       Delete Selected
-    </div>
+    </button>
   )
 }
 
