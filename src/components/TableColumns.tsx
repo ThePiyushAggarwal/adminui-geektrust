@@ -1,6 +1,7 @@
-import { BsPencilSquare, BsTrash } from "react-icons/bs"
+import { BsPencilSquare } from "react-icons/bs"
 import { ColumnsType } from "../types/Table"
 import { User } from "../types/Users"
+import DeleteUserButton from "./DeleteUserButton"
 
 export const columns: ColumnsType<User> = [
   {
@@ -21,9 +22,9 @@ export const columns: ColumnsType<User> = [
   {
     key: "4",
     label: "Actions",
-    render: () => (
+    render: (user) => (
       <>
-        <BsPencilSquare /> <BsTrash />
+        <BsPencilSquare /> <DeleteUserButton id={user.id} />
       </>
     ),
     clickToSelect: false,
