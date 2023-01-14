@@ -25,9 +25,6 @@ function Table<T>({
   rowSelection,
   pagination,
 }: TableProps<T>) {
-  /** State for the Checkbox in Table header */
-  const [allChecked, setAllChecked] = useState(false)
-
   /** Makes sure to add/remove the passed in key
    * Called when individual row checkbox is clicked
    */
@@ -71,17 +68,21 @@ function Table<T>({
           (key) => !allKeysOnPage.includes(key)
         )
         rowSelection.onChange(pendingKeys)
-        setAllChecked(false)
       } else {
         /** `Set` makes sure that there are no duplicate entries */
         const selectAllOnThisPage = [
           ...new Set([...allKeysOnPage, ...allSelectedOnThisPage]),
         ]
         rowSelection.onChange(selectAllOnThisPage)
-        setAllChecked(true)
       }
     }
   }
+
+  /** State for the Checkbox in Table header */
+  const allCheckedOnPage: boolean = useMemo(() => {
+    // TODO: Will continue from here
+    return true
+  }, [rowSelection?.selectedRowKeys, pagination.currentPage, paginatedData])
 
   return (
     <>
@@ -92,7 +93,7 @@ function Table<T>({
             columns={columns}
             rowSelection={rowSelection}
             toggleSelectAll={toggleSelectAll}
-            checked={allChecked}
+            checked={allCheckedOnPage}
           />
         </thead>
 
