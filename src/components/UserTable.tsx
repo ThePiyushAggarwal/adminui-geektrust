@@ -1,5 +1,6 @@
 import { useState, Key } from "react"
 import { User } from "../types/Users"
+import DeleteManyUsersButton from "./DeleteManyUsersButton"
 import Table from "./Table/Table"
 import { columns } from "./TableColumns"
 
@@ -16,12 +17,15 @@ function UserTable({ data }: UserTableProps) {
   }
 
   return (
-    <Table<User>
-      columns={columns}
-      data={data}
-      rowKey="id"
-      rowSelection={rowSelection}
-    />
+    <>
+      <Table<User>
+        columns={columns}
+        data={data}
+        rowKey="id"
+        rowSelection={rowSelection}
+      />
+      <DeleteManyUsersButton userIds={selectedRowKeys} />
+    </>
   )
 }
 

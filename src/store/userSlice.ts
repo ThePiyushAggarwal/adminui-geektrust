@@ -20,6 +20,9 @@ export const userSlice = createSlice({
     deleteUser: (state, { payload }: PayloadAction<Key>) => {
       state.users = state.users.filter((user) => user.id !== payload)
     },
+    deleteManyUsers: (state, { payload }: PayloadAction<Key[]>) => {
+      state.users = state.users.filter((user) => !payload.includes(user.id))
+    },
     updateUserDetails: (state, { payload }: PayloadAction<User>) => {
       state.users = state.users.map((user) =>
         user.id === payload.id ? payload : user
@@ -28,6 +31,7 @@ export const userSlice = createSlice({
   },
 })
 
-export const { deleteUser, setUsers, updateUserDetails } = userSlice.actions
+export const { deleteUser, setUsers, updateUserDetails, deleteManyUsers } =
+  userSlice.actions
 
 export default userSlice.reducer
