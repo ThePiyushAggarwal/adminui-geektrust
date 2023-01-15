@@ -3,6 +3,8 @@ import { PAGE_SIZE } from "../constants/pageSize"
 import { useAppDispatch, useAppSelector } from "../store/hooks"
 import { deleteManyUsers } from "../store/userSlice"
 import { User } from "../types/Users"
+import DeleteButton from "./Button/DeleteButton"
+import Pagination from "./Pagination/Pagination"
 import Table from "./Table/Table"
 import { ColumnsType } from "./Table/Table.types"
 
@@ -74,13 +76,10 @@ function DeleteUsersConfirmationTable({
         rowSelection={rowSelection}
         pagination={pagination}
       />
-      <button
-        onClick={onDelete}
-        className="text-red-500 text-3xl"
-        disabled={!selectedRowKeys.length}
-      >
+      <DeleteButton onClick={onDelete} disabled={!selectedRowKeys.length}>
         Delete Selected
-      </button>
+      </DeleteButton>
+      <Pagination pagination={pagination} />
     </>
   )
 }

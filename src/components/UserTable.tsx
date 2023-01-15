@@ -67,7 +67,7 @@ function UserTable({ data }: UserTableProps) {
           />
         </div>
 
-        <div className="flex">
+        <div className="pt-4 flex flex-col-reverse justify-between md:flex-row gap-y-4">
           <div>
             <DeleteManyUsersButton
               userIds={selectedKeysForDeletion}

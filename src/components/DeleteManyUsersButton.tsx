@@ -1,4 +1,5 @@
 import { Key, useState } from "react"
+import DeleteButton from "./Button/DeleteButton"
 import DeleteUsersConfirmationTable from "./DeleteUsersConfirmationTable"
 import Modal from "./Modal/Modal"
 
@@ -14,13 +15,9 @@ function DeleteManyUsersButton({ userIds, setSelectedRowKeys }: Props) {
 
   return (
     <>
-      <button
-        onClick={toggleModal}
-        className="text-red-500 text-3xl"
-        disabled={!userIds.length}
-      >
+      <DeleteButton onClick={toggleModal} disabled={!userIds.length}>
         Delete Selected
-      </button>
+      </DeleteButton>
       {isModalOpen && (
         <Modal open={isModalOpen} toggle={toggleModal}>
           <DeleteUsersConfirmationTable
