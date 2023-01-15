@@ -1,10 +1,6 @@
-interface Props {
-  open: boolean
-  toggle: () => void
-  children: React.ReactNode
-}
+import { ModalProps } from "./types"
 
-function Modal({ open, toggle, children }: Props) {
+function Modal({ open, toggle, children }: ModalProps) {
   return (
     <>
       {open && (
