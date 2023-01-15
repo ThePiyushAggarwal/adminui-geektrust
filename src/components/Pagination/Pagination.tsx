@@ -33,6 +33,7 @@ function Pagination({ pagination }: PaginationProps) {
           key={index}
           onClick={() => onChange(index + 1)}
           className="text-sm"
+          active={currentPage === index + 1}
         >
           {index + 1}
         </Button>

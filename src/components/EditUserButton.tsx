@@ -18,7 +18,7 @@ function EditUserButton({ user }: Props) {
       <button
         type="button"
         onClick={toggleModal}
-        className="text-blue-700 text-xl"
+        className="text-blue-500 text-xl"
       >
         <BsPencilSquare />
       </button>

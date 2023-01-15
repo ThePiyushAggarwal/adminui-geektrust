@@ -8,3 +8,12 @@ export interface PaginationType {
 export interface PaginationProps {
   pagination: PaginationType
 }
+
+type ButtonDefaultProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>
+
+export interface PaginationButtonProps extends ButtonDefaultProps {
+  active?: boolean
+}
