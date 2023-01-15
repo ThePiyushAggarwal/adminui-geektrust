@@ -2,7 +2,10 @@
 
 ## About The Project
 
-This project is made as a challenge from Geektrust Frontend Challenge. Using [instructions from here](https://www.geektrust.com/coding/detailed/admin-ui)
+- This project is made as a challenge from Geektrust Frontend Challenge. Using [instructions from here](https://www.geektrust.com/coding/detailed/admin-ui)
+- This is a small Admin side user management dashboard.
+- The website is mobile responsive as well.
+- Skip to [How to run the Project locally](#how-to-run-the-project-locally)
 
 ## How to run the Project locally
 
