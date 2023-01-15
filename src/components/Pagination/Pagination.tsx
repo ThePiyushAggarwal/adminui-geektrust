@@ -20,7 +20,7 @@ function Pagination({ pagination }: Props) {
       <button
         type="button"
         onClick={() => onChange(1)}
-        disabled={currentPage === 1}
+        disabled={currentPage <= 1}
         className="border"
       >
         {`<<`}
@@ -29,7 +29,7 @@ function Pagination({ pagination }: Props) {
       <button
         type="button"
         onClick={() => onChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        disabled={currentPage <= 1}
         className="border"
       >
         {`<`}
@@ -49,7 +49,7 @@ function Pagination({ pagination }: Props) {
       <button
         type="button"
         onClick={() => onChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        disabled={currentPage >= totalPages}
         className="border"
       >
         {`>`}
@@ -58,7 +58,7 @@ function Pagination({ pagination }: Props) {
       <button
         type="button"
         onClick={() => onChange(totalPages)}
-        disabled={currentPage === totalPages}
+        disabled={currentPage >= totalPages}
         className="border"
       >
         {`>>`}

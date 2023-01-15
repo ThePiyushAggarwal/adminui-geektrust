@@ -1,4 +1,4 @@
-import { Key, useState } from "react"
+import { Key } from "react"
 import RowCheckbox from "./RowCheckbox"
 import { TableProps } from "./Table"
 
@@ -15,7 +15,7 @@ function TableRow<T>({
   rowKey,
 }: TableRowProps<T>) {
   // Unique Key
-  const id = item[rowKey as keyof typeof item] as Key
+  const id = item[rowKey] as Key
 
   // Row Selection
   const isChecked =
@@ -30,7 +30,7 @@ function TableRow<T>({
 
       {columns.map((column) => {
         const { dataIndex, render } = column
-        const value = item[dataIndex as keyof typeof item] as string
+        const value = item[dataIndex as keyof T] as string
 
         //  If `dataIndex` exists that is shown instead of `render`
         return (
