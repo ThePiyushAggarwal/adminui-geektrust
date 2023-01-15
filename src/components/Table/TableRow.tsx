@@ -1,4 +1,4 @@
-import { Key, useState } from "react"
+import { Key } from "react"
 import RowCheckbox from "./RowCheckbox"
 import { TableProps } from "./Table"
 

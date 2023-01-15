@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { ColumnsType } from "../../types/Table"
 import { RowSelection } from "./Table"
 
