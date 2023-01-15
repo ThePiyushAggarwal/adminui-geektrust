@@ -1,6 +1,9 @@
 import { BsXLg } from "react-icons/bs"
 import { ModalProps } from "./Modal.types"
 
+/** To make good use of this component.
+ * `className` prop should be used to give responsive height and width
+ */
 function Modal({ open, toggle, children, className }: ModalProps) {
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()

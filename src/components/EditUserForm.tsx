@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useAppDispatch } from "../store/hooks"
 import { updateUserDetails } from "../store/userSlice"
 import { User } from "../types/Users"
+import PrimaryButton from "./Button/PrimaryButton"
+import Input from "./Form/Input"
 
 interface Props {
   user: User
@@ -39,29 +41,37 @@ function EditUserForm({ user, toggle }: Props) {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
+    <form onSubmit={onSubmit} className="text-left">
+      <label>Name</label>
+      <Input
         type="text"
         name="name"
         value={values.name}
         onChange={onChange}
         required
+        className="w-full p-2 rounded-lg mb-4"
       />
-      <input
+      <label>Email</label>
+      <Input
         type="email"
         name="email"
         value={values.email}
         onChange={onChange}
         required
+        className="w-full p-2 rounded-lg mb-4"
       />
-      <input
+      <label>Role</label>
+      <Input
         type="text"
         name="role"
         value={values.role}
         onChange={onChange}
         required
+        className="w-full p-2 rounded-lg mb-4"
       />
-      <button type="submit">Submit</button>
+      <div className="text-center">
+        <PrimaryButton type="submit">Submit</PrimaryButton>
+      </div>
     </form>
   )
 }

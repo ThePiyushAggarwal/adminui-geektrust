@@ -23,7 +23,11 @@ function EditUserButton({ user }: Props) {
         <BsPencilSquare />
       </button>
       {isModalOpen && (
-        <Modal open={isModalOpen} toggle={toggleModal}>
+        <Modal
+          open={isModalOpen}
+          toggle={toggleModal}
+          className="w-4/5 md:w-3/5 lg:w-1/2"
+        >
           <EditUserForm user={user} toggle={toggleModal} />
         </Modal>
       )}
