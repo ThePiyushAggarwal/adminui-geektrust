@@ -1,3 +1,4 @@
+import Checkbox from "../Form/Checkbox"
 import { TableHeaderProps } from "./Table.types"
 
 function TableHeader<T>({
@@ -10,7 +11,7 @@ function TableHeader<T>({
     <tr className="bg-white/80">
       {rowSelection && (
         <th className="py-2">
-          <input type="checkbox" checked={checked} onChange={toggleSelectAll} />
+          <Checkbox checked={checked} onChange={toggleSelectAll} />
         </th>
       )}
       {columns.map((column) => (
