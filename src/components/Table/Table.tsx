@@ -45,7 +45,6 @@ function Table<T>({
 
   const paginatedData = useMemo(() => {
     const { pageSize, currentPage } = pagination
-
     return [...data].splice((currentPage - 1) * pageSize, pageSize)
   }, [data, pagination])
 
@@ -55,17 +54,27 @@ function Table<T>({
     [paginatedData]
   )
 
+  /** All that are selected on this page */
+  const allSelectedOnThisPage = useMemo(
+    () =>
+      rowSelection?.selectedRowKeys.filter((key) =>
+        allKeysOnPage.includes(key)
+      ),
+    [rowSelection?.selectedRowKeys, allKeysOnPage]
+  )
+
+  /** State for the Checkbox in Table header */
+  const allCheckedOnPage: boolean = useMemo(
+    () => allSelectedOnThisPage?.length === allKeysOnPage.length,
+    [allSelectedOnThisPage, allKeysOnPage]
+  )
+
   /** Makes sure to select/deselect all when called
    * Called when the checkbox in header is clicked
    */
   const toggleSelectAll = () => {
     if (rowSelection) {
-      /** All that are selected on this page */
-      const allSelectedOnThisPage = rowSelection.selectedRowKeys.filter((key) =>
-        allKeysOnPage.includes(key)
-      )
-
-      if (allSelectedOnThisPage.length === allKeysOnPage.length) {
+      if (allCheckedOnPage) {
         /** Array of keys left after removing all visible */
         const pendingKeys = rowSelection.selectedRowKeys.filter(
           (key) => !allKeysOnPage.includes(key)
@@ -80,18 +89,6 @@ function Table<T>({
       }
     }
   }
-
-  /** State for the Checkbox in Table header */
-  const allCheckedOnPage: boolean = useMemo(() => {
-    if (rowSelection) {
-      const allSelectedOnThisPage = rowSelection.selectedRowKeys.filter((key) =>
-        allKeysOnPage.includes(key)
-      )
-
-      return allSelectedOnThisPage.length === allKeysOnPage.length
-    }
-    return false
-  }, [rowSelection?.selectedRowKeys, paginatedData])
 
   return (
     <>
