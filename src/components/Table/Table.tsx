@@ -1,4 +1,4 @@
-import { Key, useMemo, useState } from "react"
+import { Key, useMemo } from "react"
 import { ColumnsType } from "../../types/Table"
 import TableRow from "./TableRow"
 import TableHeader from "./TableHeader"
@@ -62,7 +62,7 @@ function Table<T>({
         allKeysOnPage.includes(key)
       )
 
-      if (allSelectedOnThisPage.length === pagination.pageSize) {
+      if (allSelectedOnThisPage.length === allKeysOnPage.length) {
         /** Array of keys left after removing all visible */
         const pendingKeys = rowSelection.selectedRowKeys.filter(
           (key) => !allKeysOnPage.includes(key)
@@ -71,7 +71,7 @@ function Table<T>({
       } else {
         /** `Set` makes sure that there are no duplicate entries */
         const selectAllOnThisPage = [
-          ...new Set([...allKeysOnPage, ...allSelectedOnThisPage]),
+          ...new Set([...allKeysOnPage, ...rowSelection.selectedRowKeys]),
         ]
         rowSelection.onChange(selectAllOnThisPage)
       }
@@ -80,8 +80,19 @@ function Table<T>({
 
   /** State for the Checkbox in Table header */
   const allCheckedOnPage: boolean = useMemo(() => {
-    // TODO: Will continue from here
-    return true
+    if (rowSelection) {
+      const allKeysOnPage = paginatedData.map((data) => data[rowKey]) as Key[]
+      const allSelectedOnThisPage = rowSelection.selectedRowKeys.filter((key) =>
+        allKeysOnPage.includes(key)
+      )
+
+      if (allSelectedOnThisPage.length === allKeysOnPage.length) {
+        return true
+      } else {
+        return false
+      }
+    }
+    return false
   }, [rowSelection?.selectedRowKeys, pagination.currentPage, paginatedData])
 
   return (
