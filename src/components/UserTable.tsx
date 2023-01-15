@@ -5,6 +5,7 @@ import Table from "./Table/Table"
 import { columns } from "./TableColumns"
 import SearchBar from "./SearchBar"
 import { filterOnSearch } from "../utils/filterOnSearch"
+import Footer from "./Footer"
 import { PAGE_SIZE } from "../constants/pageSize"
 
 interface UserTableProps {
@@ -52,20 +53,24 @@ function UserTable({ data }: UserTableProps) {
 
   return (
     <>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <div className="bg-white/80 mt-4 w-11/12 md:w-10/12 lg:w-8/12 mx-auto rounded-lg px-4 py-8 md:py-8 md:px-8">
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-      <Table<User>
-        columns={columns}
-        data={filteredData}
-        rowKey="id"
-        rowSelection={rowSelection}
-        pagination={pagination}
-      />
+        <Table<User>
+          columns={columns}
+          data={filteredData}
+          rowKey="id"
+          rowSelection={rowSelection}
+          pagination={pagination}
+        />
 
-      <DeleteManyUsersButton
-        userIds={selectedKeysForDeletion}
-        setSelectedRowKeys={setSelectedRowKeys}
-      />
+        <DeleteManyUsersButton
+          userIds={selectedKeysForDeletion}
+          setSelectedRowKeys={setSelectedRowKeys}
+        />
+      </div>
+
+      <Footer />
     </>
   )
 }
