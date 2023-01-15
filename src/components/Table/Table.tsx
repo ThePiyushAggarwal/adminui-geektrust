@@ -2,7 +2,8 @@ import { Key, useMemo } from "react"
 import { ColumnsType } from "../../types/Table"
 import TableRow from "./TableRow"
 import TableHeader from "./TableHeader"
-import Pagination, { PaginationType } from "../Pagination/Pagination"
+import Pagination from "../Pagination/Pagination"
+import { PaginationType } from "../Pagination/Pagination.types"
 
 export interface RowSelection {
   selectedRowKeys: Key[]

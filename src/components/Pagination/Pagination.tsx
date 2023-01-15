@@ -1,15 +1,6 @@
-export interface PaginationType {
-  currentPage: number
-  pageSize: number
-  totalDocs: number
-  onChange: (page: number) => void
-}
+import { PaginationProps } from "./Pagination.types"
 
-interface Props {
-  pagination: PaginationType
-}
-
-function Pagination({ pagination }: Props) {
+function Pagination({ pagination }: PaginationProps) {
   const { currentPage, onChange, pageSize, totalDocs } = pagination
 
   const totalPages = Math.ceil(totalDocs / pageSize)
