@@ -4,7 +4,13 @@ import { ModalProps } from "./Modal.types"
 /** To make good use of this component.
  * `className` prop should be used to give responsive height and width
  */
-function Modal({ open, toggle, children, className }: ModalProps) {
+function Modal({
+  open,
+  toggle,
+  children,
+  className,
+  bgColor = "white",
+}: ModalProps) {
   const stopPropagation = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation()
   }
@@ -22,7 +28,7 @@ function Modal({ open, toggle, children, className }: ModalProps) {
           onClick={toggle}
         >
           <div
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 drop-shadow-lg whitespace-pre-wrap ${className}`}
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-${bgColor} rounded-lg p-8 drop-shadow-lg whitespace-pre-wrap ${className}`}
             onClick={stopPropagation}
           >
             <button

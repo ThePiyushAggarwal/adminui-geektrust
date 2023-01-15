@@ -3,4 +3,6 @@ export interface ModalProps {
   toggle: () => void
   children: React.ReactNode
   className?: React.HTMLAttributes<HTMLDivElement>["className"]
+  /** Uses tailwind class. Start writing after `bg-` */
+  bgColor?: string
 }

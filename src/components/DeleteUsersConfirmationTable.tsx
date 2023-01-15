@@ -69,17 +69,24 @@ function DeleteUsersConfirmationTable({
 
   return (
     <>
-      <Table<User>
-        columns={columns}
-        data={data}
-        rowKey="id"
-        rowSelection={rowSelection}
-        pagination={pagination}
-      />
-      <DeleteButton onClick={onDelete} disabled={!selectedRowKeys.length}>
-        Delete Selected
-      </DeleteButton>
-      <Pagination pagination={pagination} />
+      <h3 className="text-2xl mb-4">Confirm Deletion</h3>
+
+      <div className="overflow-x-auto">
+        <Table<User>
+          columns={columns}
+          data={data}
+          rowKey="id"
+          rowSelection={rowSelection}
+          pagination={pagination}
+        />
+      </div>
+
+      <div className="pt-4 flex flex-col-reverse items-center md:flex-row md:justify-between gap-y-4">
+        <DeleteButton onClick={onDelete} disabled={!selectedRowKeys.length}>
+          Delete Selected
+        </DeleteButton>
+        <Pagination pagination={pagination} />
+      </div>
     </>
   )
 }

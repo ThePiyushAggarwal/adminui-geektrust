@@ -19,7 +19,11 @@ function DeleteManyUsersButton({ userIds, setSelectedRowKeys }: Props) {
         Delete Selected
       </DeleteButton>
       {isModalOpen && (
-        <Modal open={isModalOpen} toggle={toggleModal}>
+        <Modal
+          open={isModalOpen}
+          toggle={toggleModal}
+          className="w-4/5 md:w-3/5 lg:w-1/2"
+        >
           <DeleteUsersConfirmationTable
             userIds={userIds}
             setSelectedRowKeys={setSelectedRowKeys}
