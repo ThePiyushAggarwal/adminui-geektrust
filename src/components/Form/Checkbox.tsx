@@ -8,7 +8,7 @@ function Checkbox({
   return (
     <input
       type="checkbox"
-      className={`cursor-pointer w-5 h-5 m-0 ${className}`}
+      className={`flex cursor-pointer w-5 h-5 ${className}`}
       {...props}
     />
   )

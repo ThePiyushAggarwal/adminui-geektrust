@@ -13,7 +13,7 @@ function Pagination({ pagination }: PaginationProps) {
   const totalPages = Math.ceil(totalDocs / pageSize)
 
   return (
-    <div className="flex flex-wrap gap-x-4 justify-center">
+    <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center">
       {/* Go to first page */}
       <Button onClick={() => onChange(1)} disabled={currentPage <= 1}>
         <BsChevronDoubleLeft />

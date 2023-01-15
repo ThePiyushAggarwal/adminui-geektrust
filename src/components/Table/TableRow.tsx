@@ -24,9 +24,7 @@ function TableRow<T>({
 
   return (
     <tr
-      className={`bg-white/40 hover:bg-gray-300 ${
-        isChecked ? "bg-gray-300" : ""
-      }`}
+      className={`bg-white/40 hover:bg-gray-300 ${isChecked && "bg-gray-300"}`}
     >
       {rowSelection && (
         <RowCheckbox isChecked={isChecked} onClick={onClickCheckbox} />
@@ -38,7 +36,7 @@ function TableRow<T>({
 
         //  If `dataIndex` exists that is shown instead of `render`
         return (
-          <td key={column.key} className="py-2">
+          <td key={column.key} className="p-2 whitespace-nowrap">
             {dataIndex ? value : render && render(item)}
           </td>
         )

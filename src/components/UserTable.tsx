@@ -54,10 +54,10 @@ function UserTable({ data }: UserTableProps) {
 
   return (
     <>
-      <div className="bg-white/80 mt-4 w-11/12 md:w-10/12 lg:w-8/12 mx-auto rounded-lg px-4 py-8 md:py-8 md:px-8 text-center">
+      <div className="bg-white/80 mt-4 w-11/12 md:w-10/12 lg:w-8/12 mx-auto rounded-lg px-4 py-8 md:py-8 md:px-8">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-        <div className="mt-4">
+        <div className="mt-4 overflow-x-auto">
           <Table<User>
             columns={columns}
             data={filteredData}
@@ -67,7 +67,7 @@ function UserTable({ data }: UserTableProps) {
           />
         </div>
 
-        <div className="pt-4 flex flex-col-reverse justify-between md:flex-row gap-y-4">
+        <div className="pt-4 flex flex-col-reverse items-center md:flex-row md:justify-between gap-y-4">
           <div>
             <DeleteManyUsersButton
               userIds={selectedKeysForDeletion}

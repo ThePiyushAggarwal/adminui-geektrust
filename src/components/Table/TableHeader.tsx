@@ -8,14 +8,14 @@ function TableHeader<T>({
   checked,
 }: TableHeaderProps<T>) {
   return (
-    <tr className="bg-white/80">
+    <tr className="bg-white/80 text-left md:text-center">
       {rowSelection && (
-        <th className="py-2">
+        <th className="p-2">
           <Checkbox checked={checked} onChange={toggleSelectAll} />
         </th>
       )}
       {columns.map((column) => (
-        <th key={column.key} className="py-2">
+        <th key={column.key} className="p-2">
           {column.label}
         </th>
       ))}

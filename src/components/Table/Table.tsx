@@ -77,7 +77,7 @@ function Table<T>({
 
   return (
     <>
-      <table className="border-x-2 w-full">
+      <table className="border-x-2 w-full md:text-center">
         {/* Looping through column headers */}
         <thead>
           <TableHeader<T>
