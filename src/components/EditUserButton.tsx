@@ -15,7 +15,13 @@ function EditUserButton({ user }: Props) {
 
   return (
     <>
-      <BsPencilSquare onClick={toggleModal} />
+      <button
+        type="button"
+        onClick={toggleModal}
+        className="text-blue-700 text-xl"
+      >
+        <BsPencilSquare />
+      </button>
       {isModalOpen && (
         <Modal open={isModalOpen} toggle={toggleModal}>
           <EditUserForm user={user} toggle={toggleModal} />

@@ -6,7 +6,15 @@ import { deleteUser } from "../store/userSlice"
 function DeleteUserButton({ id }: { id: Key }) {
   const dispatch = useAppDispatch()
 
-  return <BsTrash onClick={() => dispatch(deleteUser(id))} />
+  const onDelete = () => {
+    dispatch(deleteUser(id))
+  }
+
+  return (
+    <button type="button" onClick={onDelete} className="text-red-500 text-xl">
+      <BsTrash />
+    </button>
+  )
 }
 
 export default DeleteUserButton

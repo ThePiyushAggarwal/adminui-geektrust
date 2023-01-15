@@ -23,10 +23,10 @@ export const columns: ColumnsType<User> = [
     key: "4",
     label: "Actions",
     render: (user) => (
-      <>
+      <div className="flex gap-x-4 justify-center">
         <EditUserButton user={user} />
         <DeleteUserButton id={user.id} />
-      </>
+      </div>
     ),
   },
 ]
