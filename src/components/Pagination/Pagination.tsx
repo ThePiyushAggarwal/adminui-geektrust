@@ -1,4 +1,11 @@
+import {
+  BsChevronDoubleLeft,
+  BsChevronDoubleRight,
+  BsChevronLeft,
+  BsChevronRight,
+} from "react-icons/bs"
 import { PaginationProps } from "./Pagination.types"
+import Button from "./PaginationButton"
 
 function Pagination({ pagination }: PaginationProps) {
   const { currentPage, onChange, pageSize, totalDocs } = pagination
@@ -6,54 +13,46 @@ function Pagination({ pagination }: PaginationProps) {
   const totalPages = Math.ceil(totalDocs / pageSize)
 
   return (
-    <div>
+    <div className="flex flex-wrap gap-x-4 justify-center">
       {/* Go to first page */}
-      <button
-        type="button"
-        onClick={() => onChange(1)}
-        disabled={currentPage <= 1}
-        className="border"
-      >
-        {`<<`}
-      </button>
+      <Button onClick={() => onChange(1)} disabled={currentPage <= 1}>
+        <BsChevronDoubleLeft />
+      </Button>
+
       {/* Go to previous page */}
-      <button
-        type="button"
+      <Button
         onClick={() => onChange(currentPage - 1)}
         disabled={currentPage <= 1}
-        className="border"
       >
-        {`<`}
-      </button>
+        <BsChevronLeft />
+      </Button>
+
       {/* Go to numbered page */}
       {[...Array(totalPages)].map((_, index) => (
-        <button
-          type="button"
+        <Button
           key={index}
           onClick={() => onChange(index + 1)}
-          className="border"
+          className="text-sm"
         >
           {index + 1}
-        </button>
+        </Button>
       ))}
+
       {/* Go to next page */}
-      <button
-        type="button"
+      <Button
         onClick={() => onChange(currentPage + 1)}
         disabled={currentPage >= totalPages}
-        className="border"
       >
-        {`>`}
-      </button>
+        <BsChevronRight />
+      </Button>
+
       {/* Go to last page */}
-      <button
-        type="button"
+      <Button
         onClick={() => onChange(totalPages)}
         disabled={currentPage >= totalPages}
-        className="border"
       >
-        {`>>`}
-      </button>
+        <BsChevronDoubleRight />
+      </Button>
     </div>
   )
 }

@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar"
 import { filterOnSearch } from "../utils/filterOnSearch"
 import Footer from "./Footer"
 import { PAGE_SIZE } from "../constants/pageSize"
+import Pagination from "./Pagination/Pagination"
 
 interface UserTableProps {
   data: User[]
@@ -66,10 +67,19 @@ function UserTable({ data }: UserTableProps) {
           />
         </div>
 
-        <DeleteManyUsersButton
-          userIds={selectedKeysForDeletion}
-          setSelectedRowKeys={setSelectedRowKeys}
-        />
+        <div className="flex">
+          <div>
+            <DeleteManyUsersButton
+              userIds={selectedKeysForDeletion}
+              setSelectedRowKeys={setSelectedRowKeys}
+            />
+          </div>
+
+          {/* Pagination */}
+          <div>
+            <Pagination pagination={pagination} />
+          </div>
+        </div>
       </div>
 
       <Footer />

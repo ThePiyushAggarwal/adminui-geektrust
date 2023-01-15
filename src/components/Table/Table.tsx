@@ -1,7 +1,6 @@
 import { Key, useMemo } from "react"
 import TableRow from "./TableRow"
 import TableHeader from "./TableHeader"
-import Pagination from "../Pagination/Pagination"
 import { TableProps } from "./Table.types"
 
 function Table<T>({
@@ -103,9 +102,6 @@ function Table<T>({
           ))}
         </tbody>
       </table>
-
-      {/* Pagination */}
-      <Pagination pagination={pagination} />
     </>
   )
 }
