@@ -1,4 +1,4 @@
-import { ModalProps } from "./types"
+import { ModalProps } from "./Modal.types"
 
 function Modal({ open, toggle, children }: ModalProps) {
   return (
