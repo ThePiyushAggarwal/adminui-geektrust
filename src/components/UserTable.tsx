@@ -68,17 +68,13 @@ function UserTable({ data }: UserTableProps) {
         </div>
 
         <div className="pt-4 flex flex-col-reverse items-center md:flex-row md:justify-between gap-y-4">
-          <div>
-            <DeleteManyUsersButton
-              userIds={selectedKeysForDeletion}
-              setSelectedRowKeys={setSelectedRowKeys}
-            />
-          </div>
+          <DeleteManyUsersButton
+            userIds={selectedKeysForDeletion}
+            setSelectedRowKeys={setSelectedRowKeys}
+          />
 
           {/* Pagination */}
-          <div>
-            <Pagination pagination={pagination} />
-          </div>
+          <Pagination pagination={pagination} />
         </div>
       </div>
 
