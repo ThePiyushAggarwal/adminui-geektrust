@@ -7,14 +7,16 @@ function TableHeader<T>({
   checked,
 }: TableHeaderProps<T>) {
   return (
-    <tr>
+    <tr className="bg-white/80">
       {rowSelection && (
-        <th>
+        <th className="py-2">
           <input type="checkbox" checked={checked} onChange={toggleSelectAll} />
         </th>
       )}
       {columns.map((column) => (
-        <th key={column.key}>{column.label}</th>
+        <th key={column.key} className="py-2">
+          {column.label}
+        </th>
       ))}
     </tr>
   )

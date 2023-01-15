@@ -23,7 +23,11 @@ function TableRow<T>({
   const onClickCheckbox = () => toggleKey(id)
 
   return (
-    <tr>
+    <tr
+      className={`bg-white/40 hover:bg-gray-300 ${
+        isChecked ? "bg-gray-300" : ""
+      }`}
+    >
       {rowSelection && (
         <RowCheckbox isChecked={isChecked} onClick={onClickCheckbox} />
       )}
@@ -34,7 +38,9 @@ function TableRow<T>({
 
         //  If `dataIndex` exists that is shown instead of `render`
         return (
-          <td key={column.key}>{dataIndex ? value : render && render(item)}</td>
+          <td key={column.key} className="py-2">
+            {dataIndex ? value : render && render(item)}
+          </td>
         )
       })}
     </tr>

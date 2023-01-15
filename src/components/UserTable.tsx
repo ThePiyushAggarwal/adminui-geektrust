@@ -53,16 +53,18 @@ function UserTable({ data }: UserTableProps) {
 
   return (
     <>
-      <div className="bg-white/80 mt-4 w-11/12 md:w-10/12 lg:w-8/12 mx-auto rounded-lg px-4 py-8 md:py-8 md:px-8">
+      <div className="bg-white/80 mt-4 w-11/12 md:w-10/12 lg:w-8/12 mx-auto rounded-lg px-4 py-8 md:py-8 md:px-8 text-center">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-        <Table<User>
-          columns={columns}
-          data={filteredData}
-          rowKey="id"
-          rowSelection={rowSelection}
-          pagination={pagination}
-        />
+        <div className="mt-4">
+          <Table<User>
+            columns={columns}
+            data={filteredData}
+            rowKey="id"
+            rowSelection={rowSelection}
+            pagination={pagination}
+          />
+        </div>
 
         <DeleteManyUsersButton
           userIds={selectedKeysForDeletion}

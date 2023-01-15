@@ -1,9 +1,15 @@
+import Checkbox from "../Form/Checkbox"
 import { RowCheckboxProps } from "./Table.types"
 
 function RowCheckbox({ onClick, isChecked }: RowCheckboxProps) {
   return (
-    <td>
-      <input type="checkbox" checked={isChecked} readOnly onClick={onClick} />
+    <td className="py-2">
+      <Checkbox
+        type="checkbox"
+        checked={isChecked}
+        readOnly
+        onClick={onClick}
+      />
     </td>
   )
 }
