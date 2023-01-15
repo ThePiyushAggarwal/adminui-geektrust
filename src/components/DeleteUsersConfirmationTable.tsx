@@ -1,4 +1,5 @@
 import { useMemo, Key, useState } from "react"
+import { PAGE_SIZE } from "../constants/pageSize"
 import { useAppDispatch, useAppSelector } from "../store/hooks"
 import { deleteManyUsers } from "../store/userSlice"
 import { User } from "../types/Users"
@@ -29,7 +30,7 @@ interface Props {
   toggleModal: () => void
 }
 
-const pageSize = 10
+const pageSize = PAGE_SIZE
 
 function DeleteUsersConfirmationTable({
   setSelectedRowKeys: setSelectedRowKeysMain,

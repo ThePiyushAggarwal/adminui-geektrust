@@ -5,12 +5,13 @@ import Table from "./Table/Table"
 import { columns } from "./TableColumns"
 import SearchBar from "./SearchBar"
 import { filterOnSearch } from "../utils/filterOnSearch"
+import { PAGE_SIZE } from "../constants/pageSize"
 
 interface UserTableProps {
   data: User[]
 }
 
-const pageSize = 10
+const pageSize = PAGE_SIZE
 
 function UserTable({ data }: UserTableProps) {
   const [searchTerm, setSearchTerm] = useState<string>("")
