@@ -1,9 +1,9 @@
 import { useMemo, Key, useState } from "react"
 import { useAppDispatch, useAppSelector } from "../store/hooks"
 import { deleteManyUsers } from "../store/userSlice"
-import { ColumnsType } from "../types/Table"
 import { User } from "../types/Users"
 import Table from "./Table/Table"
+import { ColumnsType } from "./Table/Table.types"
 
 const columns: ColumnsType<User> = [
   {

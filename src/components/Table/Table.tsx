@@ -1,23 +1,8 @@
 import { Key, useMemo } from "react"
-import { ColumnsType } from "../../types/Table"
 import TableRow from "./TableRow"
 import TableHeader from "./TableHeader"
 import Pagination from "../Pagination/Pagination"
-import { PaginationType } from "../Pagination/Pagination.types"
-
-export interface RowSelection {
-  selectedRowKeys: Key[]
-  onChange: (selectedRowKeys: Key[]) => void
-}
-
-export interface TableProps<T> {
-  columns: ColumnsType<T>
-  data: T[]
-  // `rowKey` is the unique key present in the `data`
-  rowKey: keyof T
-  rowSelection?: RowSelection
-  pagination: PaginationType
-}
+import { TableProps } from "./Table.types"
 
 function Table<T>({
   columns,

@@ -1,6 +1,6 @@
 import { Key } from "react"
 import RowCheckbox from "./RowCheckbox"
-import { TableProps } from "./Table"
+import { TableProps } from "./Table.types"
 
 interface TableRowProps<T> extends Omit<TableProps<T>, "pagination" | "data"> {
   toggleKey: (id: Key) => void

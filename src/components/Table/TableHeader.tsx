@@ -1,12 +1,4 @@
-import { ColumnsType } from "../../types/Table"
-import { RowSelection } from "./Table"
-
-interface TableHeaderProps<T> {
-  columns: ColumnsType<T>
-  rowSelection?: RowSelection
-  toggleSelectAll: () => void
-  checked: boolean
-}
+import { TableHeaderProps } from "./Table.types"
 
 function TableHeader<T>({
   columns,

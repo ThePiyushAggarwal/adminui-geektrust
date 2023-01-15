@@ -1,9 +1,6 @@
-interface Props {
-  onClick: () => void
-  isChecked: boolean
-}
+import { RowCheckboxProps } from "./Table.types"
 
-function RowCheckbox({ onClick, isChecked }: Props) {
+function RowCheckbox({ onClick, isChecked }: RowCheckboxProps) {
   return (
     <td>
       <input type="checkbox" checked={isChecked} readOnly onClick={onClick} />

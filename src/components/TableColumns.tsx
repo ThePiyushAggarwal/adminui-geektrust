@@ -1,7 +1,7 @@
-import { ColumnsType } from "../types/Table"
 import { User } from "../types/Users"
 import DeleteUserButton from "./DeleteUserButton"
 import EditUserButton from "./EditUserButton"
+import { ColumnsType } from "./Table/Table.types"
 
 export const columns: ColumnsType<User> = [
   {
