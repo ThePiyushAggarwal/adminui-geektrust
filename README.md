@@ -1,5 +1,7 @@
 # Admin UI Geektrust Challenge
 
+### Deployed [here](https://adminui-geektrust-ruby.vercel.app/)
+
 ## About The Project
 
 - This project is made as a challenge from Geektrust Frontend Challenge. Using [instructions from here](https://www.geektrust.com/coding/detailed/admin-ui)
